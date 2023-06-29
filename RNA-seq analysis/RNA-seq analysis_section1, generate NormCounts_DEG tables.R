@@ -2,14 +2,14 @@
   ## 1. the generate differential gene expression (DEG) table (no batch correction).  
   ## 2. the normalized counts table (ComBat batch corrected). 
 
-# The input and out put tables are available from GEO (.....) for experiments 1. to 4. set below.
+# The input and out put tables are available from GEO (GSE232939) for experiments 1. to 4. set below.
 
 # This code applys to the experiments below: 
   ## 1.RNA-seq from ASO-L1 KD in Primed hESCs
   ## 2.RNA-seq from ASO-L1 KD in RSeT hESCs
   ## 3.RNA-seq from ASO-L1 KD in RSeT+DT hESCs
   ## 4.RNA-seq from ASO-L1 and (TPRX1-,TP53-,H3.XY-) siRNA transfected co-KD in RSeT+DT hESCs.
-# The raw counts is generated following the RNA-seq analysis pipeline created by M. Percharde (https://github.com/mpercharde/RNAseq). 
+# The raw counts is generated following the RNA-seq analysis pipeline created by M. Percharde (https://github.com/mpercharde/RNAseq), also see methods.
 # The raw counts generated from feature counts (the pipeline above) is formatted (e.g. remove duplicates) as needed for input read. 
 
 # This code also applys to The experiments:
@@ -66,7 +66,7 @@ tmp <- contrasts.fit(fit, contr)
 tmp <- eBayes(tmp)
 top.table <- topTable(tmp, sort.by = "P", n = Inf)
 head(top.table, 20)
-length(which(top.table$adj.P.Val < 0.05 & abs(top.table$logFC)>log2(1.5)))    #how many are significant: adj.P.Val < 0.05 & abs(logFC)>log2(1.5)?
+length(which(top.table$adj.P.Val < 0.05 & abs(top.table$logFC)>log2(1.5)))    # to inquire how many genes are: adj.P.Val < 0.05 & abs(logFC)>log2(1.5)
 top.table$Gene <- rownames(top.table)
 top.table <- top.table[,c("Gene", names(top.table)[1:6])]
 write.table(top.table, file = "hESC_L1KD,ASO-L1KD to ASO-Ctr_DEG,cutoff=0.2.txt", row.names = F, sep = "\t", quote = F)  # exported the differential gene expression table 
@@ -117,7 +117,7 @@ write.table(y$E, file = "hESC_L1KD,lo2Nom_counts,cutoff=0.2_BatchCo.txt", row.na
 
 # This code applys to the experiments: 
 ## 1. ASO-L1 KD in RSeT+DT hESCs, for plotting of repeats expression (Extended Data Fig.2c). 
-### The repeats raw counts table "RSeT+DT,hL1KD-raw_counts,s1_16_repeat.txt" is included in this repository. The RefGene_raw_counts for this experiment is available from GEO (.....)
+### The repeats raw counts table "RSeT+DT,hL1KD-raw_counts,s1_16_repeat.txt" is included in this repository. The RefGene_raw_counts for this experiment is available from GEO (GSE232939)
 ### The output "RSeT+DT hESC_L1KD,lo2Nom_counts_repeats,Ref-N_BathCo.txt" is included in this repository, and utilized for the heatmap plot in Extended Data Fig.2c. 
 
 ## 2. Hendrickson, et al. (PGH)_EmbryoStages_data analysis for TEs/LINE1s expression (Extended Data Fig.1a).  

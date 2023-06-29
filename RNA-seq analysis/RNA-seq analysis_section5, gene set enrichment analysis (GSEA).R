@@ -1,6 +1,6 @@
 # This code is to input the t-ranked gene list from the differential gene expression (DEG) table.
 # To generate DEG table, see the "RNA-seq analysis_section1,generate NormCounts_DEG tables.R" script, 
-# The DEG tables above is available from GEO (.....) for each experimental set below.
+# The DEG tables above is available from GEO (GSE232939) for each experimental set below.
 
 # The "Gene" and "t" columns (ranked by descending t values) from the DEG table are saved to an new .RNK table without header for input, just by changing the file type.See the "RSeT+DT hESC_L1KD,ASO-L1intORF_sO-L1intORF,-t.RNK" file in the repository for example.
 # Gene sets used in this study are listed in the Supplementary Table 2. Save the gene sets/names in a .gmt file without header, see the "8cell_genes_Stowers.gmt" file in the repository for example. 

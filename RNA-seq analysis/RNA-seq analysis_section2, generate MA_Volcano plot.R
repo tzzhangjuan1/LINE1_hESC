@@ -1,7 +1,7 @@
 # This code is to input the differential gene expression table table, to out put MA or volcano plot
 # To generate differential gene expression (DEG) table, see the "RNA-seq analysis_section1,generate NormCounts_DEG tables.R" script 
 
-# The input tables above is available from GEO (.....) for each experimental set below.
+# The input tables above is available from GEO (GSE232939) for each experimental set below.
 # The DEG table (.txt) is coverted to (.CTP) for input, just by changing the file type.
 # Gene sets used in this study are listed in the Supplementary Table 2. Save the gene sets/names in a .csv file with header "Gene"), see the "8cell_genes_Stowers.csv" file in the repository for example. 
 

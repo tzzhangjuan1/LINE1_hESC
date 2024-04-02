@@ -2,15 +2,17 @@
   ## 1. the generate differential gene expression (DEG) table (no batch correction).  
   ## 2. the normalized counts table (ComBat batch corrected). 
 
-# The input and out put tables are available from GEO (GSE232939) for experiments 1. to 4. set below.
+# The input and out put tables are available from GEO (GSE232939) for experiments 1. to 6. set below.
 
 # This code applys to the experiments below: 
   ## 1.RNA-seq from ASO-L1 KD in Primed hESCs
   ## 2.RNA-seq from ASO-L1 KD in RSeT hESCs
   ## 3.RNA-seq from ASO-L1 KD in RSeT+DT hESCs
-  ## 4.RNA-seq from ASO-L1 and (TPRX1-,TP53-,H3.XY-) siRNA transfected co-KD in RSeT+DT hESCs.
-# The raw counts is generated following the RNA-seq analysis pipeline created by M. Percharde (https://github.com/mpercharde/RNAseq), also see methods.
-# The raw counts generated from feature counts (the pipeline above) is formatted (e.g. remove duplicates) as needed for input read. 
+  ## 4.RNA-seq from ASO-L1 KD in PXGL hESCs
+  ## 5.RNA-seq from EZH2i in RSeT+DT hESCs
+  ## 6.RNA-seq from ASO-L1 and (TPRX1-,TP53-,H3.XY-) siRNA transfected co-KD in RSeT+DT hESCs.
+# The raw counts are generated following the RNA-seq analysis pipeline created by M. Percharde (https://github.com/mpercharde/RNAseq), also see methods.
+# The raw counts generated from feature counts (the pipeline above) are formatted (e.g. remove duplicates) as needed for input read. 
 
 # This code also applys to The experiments:
 ## 5.Hendrickson, et al. (PGH)_EmbryoStages_data analysis for Genes expression (Fig.4f). 
@@ -55,11 +57,10 @@ head(coef(fit))
 dim(coef(fit))
 
 
-
 ####################   Differential Gene Expression analysis  ####################
 
 # Differential analysis for ASO-L1 to SO-L1 cells. 
-# Or do other comparisons as you want by changing the groupNAME. The groupNAME should be same as the group names from above. 
+# Or do other comparisons as need by changing the groupNAME. The groupNAME should be the same as the group names from above. 
 contr <- makeContrasts(groupASO-L1 - groupSO-L1., levels = colnames(coef(fit)))           # ASO-L1 and SO-L1. is compared. 
 contr
 tmp <- contrasts.fit(fit, contr)
@@ -75,8 +76,6 @@ write.table(top.table, file = "hESC_L1KD,ASO-L1KD to ASO-Ctr_DEG,cutoff=0.2.txt"
 
 View(y$E)
 write.table(y$E, file = "hESC_L1KD,lo2Nom_counts,cutoff=0.2.txt", row.names = T, sep = "\t", quote = F)  # export the normalized counts table (no batch correction).  
-
-
 
 
 ####################   ComBat batch correction function  ####################
@@ -116,13 +115,13 @@ write.table(y$E, file = "hESC_L1KD,lo2Nom_counts,cutoff=0.2_BatchCo.txt", row.na
 ##############################################################################
 
 # This code applys to the experiments: 
-## 1. ASO-L1 KD in RSeT+DT hESCs, for plotting of repeats expression (Extended Data Fig.2c). 
+## 1. ASO-L1 KD in RSeT+DT hESCs, for plotting of repeats expression (Figure S2C). 
 ### The repeats raw counts table "RSeT+DT,hL1KD-raw_counts,s1_16_repeat.txt" is included in this repository. The RefGene_raw_counts for this experiment is available from GEO (GSE232939)
-### The output "RSeT+DT hESC_L1KD,lo2Nom_counts_repeats,Ref-N_BathCo.txt" is included in this repository, and utilized for the heatmap plot in Extended Data Fig.2c. 
+### The output "RSeT+DT hESC_L1KD,lo2Nom_counts_repeats,Ref-N_BathCo.txt" is included in this repository, and utilized for the heatmap plot in Figure S2C. 
 
-## 2. Hendrickson, et al. (PGH)_EmbryoStages_data analysis for TEs/LINE1s expression (Extended Data Fig.1a).  
+## 2. Hendrickson, et al. (PGH)_EmbryoStages_data analysis for TEs/LINE1s expression (Figure S1A).  
 ### The repeats raw counts table "PGHendrickson_EmbryoStage_Repeats, raw_counts.txt" and "PGHendrickson_EmbryoStage_Genes,raw_counts.txt" is included in this repository 
-### The output "PGHendrickson_EmbryoStage_Repeats,RefN_counts.txt" is included in this repository, and utilized for the heatmap plot in Extended Data Fig.2c. 
+### The output "PGHendrickson_EmbryoStage_Repeats,RefN_counts.txt" is included in this repository, and utilized for the heatmap plot in Figure S1A. 
 
 
 # Input raw counts table of the repeats 

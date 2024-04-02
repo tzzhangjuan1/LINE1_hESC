@@ -52,6 +52,7 @@ heatmap.2(mat_subtopT,
 
 # the heatmap output displays clustered genes expressed at specific embryonic stages, see Extended Data Fig.5m)
 
+
 ############################## extract dendrogram cluster from pheatmap ###################################
 
 out = heatmap.2(mat_subtopT,

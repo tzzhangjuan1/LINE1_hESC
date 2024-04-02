@@ -7,12 +7,12 @@
 
 
 # This code applys to the experiments below: 
-## 1.RNA-seq from ASO-L1 KD in Primed hESCs
-## 2.RNA-seq from ASO-L1 KD in RSeT hESCs
-## 3.RNA-seq from ASO-L1 KD in RSeT+DT hESCs
-## 4.RNA-seq from ASO-L1 and (TPRX1-,TP53-,H3.XY-) siRNA transfected co-KD in RSeT+DT hESCs.
-
-
+  ## 1.RNA-seq from ASO-L1 KD in Primed hESCs
+  ## 2.RNA-seq from ASO-L1 KD in RSeT hESCs
+  ## 3.RNA-seq from ASO-L1 KD in RSeT+DT hESCs
+  ## 4.RNA-seq from ASO-L1 KD in PXGL hESCs
+  ## 5.RNA-seq from EZH2i in RSeT+DT hESCs
+  ## 6.RNA-seq from ASO-L1 and TPRX1-siRNA transfected co-KD in RSeT+DT hESCs.
 
 
 install.packages("gplots", dependencies = TRUE)

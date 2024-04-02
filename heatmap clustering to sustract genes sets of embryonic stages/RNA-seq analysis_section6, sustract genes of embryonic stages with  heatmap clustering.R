@@ -1,5 +1,5 @@
 # This code is to input the normalized counts table form the scRNA-seq by Yan et al., 2013, to subtract clustered genes set at specific embryonic stages. 
-# see Extended Data Fig.5m and Supplementary Table 2.  
+# Genes of each embryos stages are listed Table S2.  
 
 # The data resource from Yan et al. are available from their Supplemental Table.
 # The input "scRNAseq_Yan, human embryo stages.txt" tables above is available in the repository. 
@@ -50,7 +50,7 @@ heatmap.2(mat_subtopT,
           Rowv = as.dendrogram(hr1), # apply default clustering method
           Colv=as.dendrogram(hc))           # turn off column clustering
 
-# the heatmap output displays clustered genes expressed at specific embryonic stages, see Extended Data Fig.5m)
+# the heatmap output displays clustered genes expressed at specific embryonic stages)
 
 
 ############################## extract dendrogram cluster from pheatmap ###################################
@@ -104,7 +104,7 @@ names(clus_row[clus_row==6])     # the genes and genes number (2721) in cluster 
 names(clus_row[clus_row==7])     # the genes and genes number (211) in cluster 7
 names(clus_row[clus_row==8])     # the genes and genes number (301) in cluster 8
 names(clus_row[clus_row==9])     # the genes and genes number (291) in cluster 9
-# Based on the cluster size/position, try to figure out which cluster mach to which embryonic stage. see Extended Data Fig.5m
+# Based on the cluster size/position, try to figure out which cluster mach to which embryonic stage.
 
 # export these clustered genes to a csv file, in the same order as showing in the dendrogram,the order is bottom-to-top 
 write.table(data.frame(gene = names(clus_row[clus_row==1])),'cluster1.csv',row.names = FALSE,quote = FALSE,sep = ',') #export cluster 1 that contains 2457 genes

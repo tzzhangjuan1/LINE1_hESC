@@ -73,18 +73,16 @@ wilcox.test(RSeTwtDT_ASOint_8cell_Stowers$logFC,RSeTwtDT_random$logFC)
 
 
 
-#################################################################################################################
-################################### This code applys to the experiments below: ##################################
-########## 1.RNA-seq from ASO-L1 and (TPRX1-,TP53-,H3.XY-) siRNA transfected co-KD in RSeT+DT hESCs.  ###########
-############################################    For Fig.2j    ################################################### 
-#################################################################################################################
+#################################################################################################
+################################### This code applys to the experiments below: ##################
+########## 1.RNA-seq from ASO-L1 and TPRX1-siRNA transfected co-KD in RSeT+DT hESCs.  ###########
+############################################    For Fig.2j    ###################################
+#################################################################################################
 
 ####################   READ DEG.TABLE and gene_sets.TABLE  ####################
 
 L1KD_NTsi<- read.table("L1KD.NTsiRNA_CtrA.NTsi_cutoff=0.2.CTP", header=TRUE, sep="\t")       # Table is available from GEO (.....)
 L1KD_TPRX1si<- read.table("L1KD.TPRX1si_CtrA.NTsi_cutoff=0.2.CTP", header=TRUE, sep="\t")    # Table is available from GEO (.....)
-L1KD_TP53si<- read.table("L1KD.TP53si_CtrA.NTsi_cutoff=0.2.CTP", header=TRUE, sep="\t")      # Table is available from GEO (.....)
-L1KD_H3XYsi<- read.table("L1KD.H3XYsi_CtrA.NTsi_cutoff=0.2.CTP", header=TRUE, sep="\t")      # Table is available from GEO (.....)
 
 Eightcell_Stowers <- read.table("8cell_genes_Stowers.csv",sep=",",header=TRUE)         #Stowers paper, 45 gene
 
@@ -92,20 +90,16 @@ Eightcell_Stowers <- read.table("8cell_genes_Stowers.csv",sep=",",header=TRUE)  
 PcG <- read.table("human_NM_hg38_Genes.csv",sep=",",header=TRUE)   # 19378 protein coding genes,hg38_NM. ## The "human_NM_hg38_Genes.csv" file is in the repository  
 L1KD_NTsi<- L1KD_NTsi[L1KD_NTsi$Gene %in% PcG$gene, ]              #15264
 L1KD_TPRX1si<- L1KD_TPRX1si[L1KD_TPRX1si$Gene %in% PcG$gene, ]     #15264
-L1KD_TP53si<- L1KD_TP53si[L1KD_TP53si$Gene %in% PcG$gene, ]        #15264
-L1KD_H3XYsi<- L1KD_H3XYsi[L1KD_H3XYsi$Gene %in% PcG$gene, ]        #15264
 
 ####################   Subset 8cell_Stowers genes expressed in each DEG.TABLE   ####################
 L1KD_NTsi_8cell_Stowers<- L1KD_NTsi[L1KD_NTsi$Gene %in% Eightcell_Stowers$gene, ]      #20
 L1KD_TPRX1si_8cell_Stowers<- L1KD_TPRX1si[L1KD_TPRX1si$Gene %in% Eightcell_Stowers$gene, ]      #20
-L1KD_TP53si_8cell_Stowers<- L1KD_TP53si[L1KD_TP53si$Gene %in% Eightcell_Stowers$gene, ]      #20
-L1KD_H3XYsi_8cell_Stowers<- L1KD_H3XYsi[L1KD_H3XYsi$Gene %in% Eightcell_Stowers$gene, ]      #20
 
-L1KD_NTsi_random <- sample_n(L1KD_NTsi, 100, replace = FALSE)     #take a RANDOM 100 SUBSET of genes 
+L1KD_NTsi_random <- sample_n(L1KD_NTsi, 45, replace = FALSE)     #take a RANDOM 45 SUBSET of genes 
 
 ####################    Combine 8cell_Stowers genes in all the DEG.Table to one table, set Categorical Variables   ####################
-Eightcell_Stowers <-bind_rows("L1KD_NTsi_random"=L1KD_NTsi_random,"L1KD_NTsi_8cell_Stowers"= L1KD_NTsi_8cell_Stowers,"L1KD_TPRX1si_8cell_Stowers"= L1KD_TPRX1si_8cell_Stowers,"L1KD_TP53si_8cell_Stowers"= L1KD_TP53si_8cell_Stowers,"L1KD_H3XYsi_8cell_Stowers"= L1KD_H3XYsi_8cell_Stowers, .id = "change")    # the combined table called "Eightcell_Stowers"
-Eightcell_Stowers$change <- factor(Eightcell_Stowers$change, levels = c("L1KD_NTsi_random", "L1KD_NTsi_8cell_Stowers", "L1KD_TPRX1si_8cell_Stowers","L1KD_TP53si_8cell_Stowers", "L1KD_H3XYsi_8cell_Stowers"))      # set Categorical Variables in the "change" column
+Eightcell_Stowers <-bind_rows("L1KD_NTsi_random"=L1KD_NTsi_random,"L1KD_NTsi_8cell_Stowers"= L1KD_NTsi_8cell_Stowers,"L1KD_TPRX1si_8cell_Stowers"= L1KD_TPRX1si_8cell_Stowers, .id = "change")    # the combined table called "Eightcell_Stowers"
+Eightcell_Stowers$change <- factor(Eightcell_Stowers$change, levels = c("L1KD_NTsi_random", "L1KD_NTsi_8cell_Stowers", "L1KD_TPRX1si_8cell_Stowers"))      # set Categorical Variables in the "change" column
 
 ####################    plot each categorical variables as violin plot for comparison  ####################
 ggplot(Eightcell_Stowers, aes(change, logFC, fill = change)) +
@@ -126,6 +120,4 @@ ggplot(Eightcell_Stowers, aes(change, logFC, fill = change)) +
 
 ####################    Statistic: wilcox.test for expression changes between the gene sets   ####################
 wilcox.test(L1KD_NTsi_8cell_Stowersk$logFC,L1KD_TPRX1si_8cell_Stowers$logFC) 
-wilcox.test(L1KD_NTsi_8cell_Stowers$logFC,L1KD_TP53si_8cell_Stowers$logFC)
-wilcox.test(L1KD_NTsi_8cell_Stowers$logFC,L1KD_H3XYsi_8cell_Stowers$logFC)
 wilcox.test(L1KD_NTsi_8cell_Stowers$logFC,L1KD_NTsi_random$logFC)

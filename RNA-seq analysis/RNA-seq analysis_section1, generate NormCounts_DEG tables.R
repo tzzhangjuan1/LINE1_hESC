@@ -10,7 +10,7 @@
   ## 3.RNA-seq from ASO-L1 KD in RSeT+DT hESCs
   ## 4.RNA-seq from ASO-L1 KD in PXGL hESCs
   ## 5.RNA-seq from EZH2i in RSeT+DT hESCs
-  ## 6.RNA-seq from ASO-L1 and (TPRX1-,TP53-,H3.XY-) siRNA transfected co-KD in RSeT+DT hESCs.
+  ## 6.RNA-seq from ASO-L1 and TPRX1-siRNA transfected co-KD in RSeT+DT hESCs.
 # The raw counts are generated following the RNA-seq analysis pipeline created by M. Percharde (https://github.com/mpercharde/RNAseq), also see methods.
 # The raw counts generated from feature counts (the pipeline above) are formatted (e.g. remove duplicates) as needed for input read. 
 

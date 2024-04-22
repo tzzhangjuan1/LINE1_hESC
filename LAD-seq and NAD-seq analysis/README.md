@@ -4,5 +4,5 @@
 ## For NADs:
   Raw fastq files -> NAD.slurm.sh -> bw files -> analyze.py -> LADs (bed files)
 
-## Data processing and Bed calling by Dr.Linh Huynh (vietlinh.huynh@gmail.com)
-## Downstream analysis on the bed files by Dr.Juan Zhang (tzzhangjuan@gmail.com)
+### Data processing and Bed calling by Dr.Linh Huynh (vietlinh.huynh@gmail.com)
+### Downstream analysis on the bed files by Dr.Juan Zhang (tzzhangjuan@gmail.com)

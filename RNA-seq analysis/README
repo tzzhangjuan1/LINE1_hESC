@@ -4,6 +4,7 @@ This repository contains five R. scripts used in the RNA-seq analysis in this st
 # RNA-seq analysis_section3, generate violin plot.R
 # RNA-seq analysis_section4, heatmap plot.R
 # RNA-seq analysis_section5, gene set enrichment analysis (GSEA).R
+# RNA-seq analysis_section6, Correlation plot.R
 
 The txt/csv/gmt/RNK files are input files (or a formatted example of the input file) in the R.scripts. See each for details
 More input files are available from GEO (GSE232939) or in Supplementary Table 2, as described in the R.scripts.

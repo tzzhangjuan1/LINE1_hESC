@@ -65,6 +65,27 @@ ggplot(KD, aes(x = logFC, y = -log10(adj.P.Val), col = cat)) +
   ylab("-log10 FDR") + xlab("log2 fold-change (ASO-L1 / SO-L1)")     #Change name of axis as needed. xlab is the adj.P.Val of each gene. ylab is the compared log2 fold changes between samples in the input DEG table, here "ASO-L1 / SO-L1" for example
 
 
+################ Correlation plot   ###################
+# compare gene expression change by EZH2i and L1KD, for correlation efficiency
 
+install.packages("ggpubr")
+library("ggpubr")
 
+EZH2i <- read.table("RSeT+DT_EZH2i,DEG TABLE.CTP", header=TRUE, sep="\t")
+L1KD <- read.table("RSeT+DT_L1KD,DEG TABLE.CTP", header=TRUE, sep="\t")
+
+EZH2i <- EZH2i[,c('Gene', 'logFC')]
+L1KD <- L1KD[,c('Gene', 'logFC')]
+Merge <- merge(EZH2i,L1KD,by='Gene', all = TRUE)
+Merge <- na.omit(Merge)
+
+write.table(Merge, file = "L1KD_EZH2i-logFC_Merged.txt", row.names = T, sep = "\t", quote = F)
+
+ggscatter(Merge, x = "logFC.x", y = "logFC.y", 
+          add = "reg.line", conf.int = TRUE, 
+          add.params = list(color = "red2", fill = "lightgray"),
+          cor.coeff.args = list(method = "spearman", label.y = 4, label.sep = "\n"),
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "logFC EZH2i", ylab = "logFC L1KD")
+cor.test(Merge$logFC.x, Merge$logFC.y, alternative = c("two.sided"), method = c("spearman"))
 

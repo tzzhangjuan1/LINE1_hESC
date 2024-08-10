@@ -12,6 +12,7 @@
   ## 4.RNA-seq from ASO-L1 KD in PXGL hESCs
   ## 5.RNA-seq from EZH2i in RSeT+DT hESCs
   ## 6.RNA-seq from ASO-L1 and TPRX1-siRNA transfected co-KD in RSeT+DT hESCs.
+  ## 7.RNA-seq from Collinson et al 2016, Cell Reports_GSE76626_RNA-Seq (data process is described in the STAR METHOD, and 
 
 
 library(fgsea)

@@ -12,7 +12,7 @@
   ## 4.RNA-seq from ASO-L1 KD in PXGL hESCs
   ## 5.RNA-seq from EZH2i in RSeT+DT hESCs
   ## 6.RNA-seq from ASO-L1 and TPRX1-siRNA transfected co-KD in RSeT+DT hESCs.
-  ## 7.RNA-seq from Collinson et al 2016, Cell Reports_GSE76626_RNA-Seq (normalized counts table "GSE76626_EZH2null_WT,cutoff=0.2,Norm_counts.txt" is analyzed following RNA-seq analysis methods in this paper, and is included in the repository. 
+  ## 7.RNA-seq from Collinson et al 2016, Cell Reports_GSE76626_RNA-Seq ("GSE76626_ESC-EZH2KO_raw_counts_rmDup.txt" and "GSE76626_EZH2null_WT,cutoff=0.2,Norm_counts.txt" are analyzed following RNA-seq analysis methods in this paper and are included in the repository.) 
 
 
 library(fgsea)
